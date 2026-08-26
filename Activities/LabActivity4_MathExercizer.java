@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Random;
 import java.lang.Math;
 
-public class LabActivity4_system {
+public class LabActivity4_MathExercizer {
     public static void main(String[] args){
         Random rand = new Random();
         Scanner scan = new Scanner(System.in);
