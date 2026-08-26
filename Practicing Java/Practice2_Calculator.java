@@ -2,9 +2,9 @@ public class Practice2_Calculator
 {
     public static void main(String[] args)
     {
-        double a = 1.24;
-        double b = 12;
-        String arithmetic_choice = "-";
+        double a = 10;
+        double b = 1;
+        String arithmetic_choice = "nigga";
 
 
 

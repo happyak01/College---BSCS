@@ -5,7 +5,7 @@ public class Practice1_AgeVerification{
   String birthday = "";
   day = 15;
   month = 12;
-  year = 2026;
+  year = 2006;
   int age = 2026 - year;
   birthday = month + "/" + day + "/" + year;
   System.out.println("Hello! " + name + " " + birthday);
@@ -18,6 +18,6 @@ public class Practice1_AgeVerification{
   else if(age>=60){
   System.out.println("Nice try faking your age.");
   }
+  }
   
   }
-}
