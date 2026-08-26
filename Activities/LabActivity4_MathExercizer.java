@@ -15,7 +15,7 @@ public class LabActivity4_MathExercizer {
         int totalIteration;
         int prev_a=0;
         int prev_b=0;
-        System.out.println("Welcome to Math Training! You will choose which operation to practice and then set number range that will be used");
+        System.out.println("Welcome to Math Exercizer! You will choose which operation to practice and then set number range that will be used");
         System.out.println();
             System.out.println("Choose an operator:");
             System.out.println("1 - Exponent");
@@ -118,7 +118,6 @@ public class LabActivity4_MathExercizer {
                         }
                         
                 case 4:
-                    System.out.println("add");
                     // Gets an random number between user entered range and mentions in the question
                         a = rand.nextInt((range_two - range_one +1 )+range_one);
                         b = rand.nextInt((range_two - range_one +1 )+range_one);
@@ -139,7 +138,6 @@ public class LabActivity4_MathExercizer {
                         break;
                         }
                 case 5:
-                    System.out.println("sub");
                     // Gets an random number between user entered range and mentions in the question
                         a = rand.nextInt((range_two - range_one +1 )+range_one);
                         b = rand.nextInt((range_two - range_one +1 )+range_one);
