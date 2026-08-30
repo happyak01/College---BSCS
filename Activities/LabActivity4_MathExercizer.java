@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 import java.lang.Math;
-import java.io.*;
+import java.io;
 
 public class LabActivity4_MathExercizer {
     public static void main(String[] args){
@@ -10,15 +10,20 @@ public class LabActivity4_MathExercizer {
         int operatr=0;
         int range_one, range_two;
         float userGuess;
+        //random num holder
         int a, b;
         float total = 0;
         int completedIteration = 0;
         int totalIteration;
+        //previous num random, for checking if its equal to the current 'a' and 'b' 
         int prev_a=0;
         int prev_b=0;
+        //text coloring
         String ANSI_Reset = "\u001B[0m";
         String ANSI_Green = "\u001B[32m";
         String ANSI_Red = "\u001B[31m";
+
+
         System.out.println("Welcome to Math Exercizer! You will choose which operation to practice and then set number range that will be used");
         System.out.println();
             System.out.println("Choose an operator:");
@@ -46,11 +51,13 @@ public class LabActivity4_MathExercizer {
             range_one = scan.nextInt();
             System.out.println("Set maxinum range: ");
             range_two = scan.nextInt();
-            /* 
-            if (range_two<=range_one) {
-                System.out.println("Range is invalid, restart the game.");
-                return 0;
-            }*/
+            while (range_one>range_two) {
+                System.out.println("Invalid Range. Re-enter.");
+                System.out.println("Set minimum range: ");
+                range_one = scan.nextInt();
+                System.out.println("Set maxinum range: ");
+                range_two = scan.nextInt();
+            }
 
             System.out.println("How many questions you want to solve?");
             totalIteration = scan.nextInt();
@@ -108,7 +115,11 @@ public class LabActivity4_MathExercizer {
                     // Gets an random number between user entered range and mentions in the question
                         a = rand.nextInt((range_two - range_one +1 )+range_one);
                         b = rand.nextInt((range_two - range_one +1 )+range_one);
-                        //repeatingly checks if the numbers respects the division rule
+                        /*
+                        repeatingly checks if the numbers respects the division rules
+                        1. if 'a' is bigger than divisor 'b'
+                        2.
+                        */
                         if (a>=b && b!=0 && a%b == 0 && prev_a != a && prev_b != b) {
                             total = (float) a / b;
                         System.out.println();
@@ -194,9 +205,6 @@ public class LabActivity4_MathExercizer {
                     total = 7-6+3/3*5;
                     System.out.println(total);
                     break;
-            
-                default:
-                    
             }
             
         }
