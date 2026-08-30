@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
 import java.lang.Math;
-import java.io;
 
 public class LabActivity4_MathExercizer {
     public static void main(String[] args){
@@ -14,7 +13,10 @@ public class LabActivity4_MathExercizer {
         int a, b;
         float total = 0;
         int completedIteration = 0;
-        int totalIteration;
+        int totalIteration=0;
+        //exponent
+        int range_one_exp=0;
+        int range_two_exp=0;
         //previous num random, for checking if its equal to the current 'a' and 'b' 
         int prev_a=0;
         int prev_b=0;
@@ -32,12 +34,11 @@ public class LabActivity4_MathExercizer {
             System.out.println("3 - Division");
             System.out.println("4 - Addition");
             System.out.println("5 - Subtraction");
-            System.out.println("6 - PEMDAS Practice");
             System.out.println();
             operatr = scan.nextInt();
-            while (operatr == 0) {
+            while (operatr == 0 || operatr>=5) {
                 System.out.println();
-                System.out.println("You entered 0, there's no opearator. Enter again");
+                System.out.println("Invalid number, there's no opearator. Enter again");
                 System.out.println("Choose an operator:");
                 System.out.println("1 - Exponent");
                 System.out.println("2 - Multiplication");
@@ -51,7 +52,9 @@ public class LabActivity4_MathExercizer {
             range_one = scan.nextInt();
             System.out.println("Set maxinum range: ");
             range_two = scan.nextInt();
+
             while (range_one>range_two) {
+                System.out.println();
                 System.out.println("Invalid Range. Re-enter.");
                 System.out.println("Set minimum range: ");
                 range_one = scan.nextInt();
@@ -59,15 +62,37 @@ public class LabActivity4_MathExercizer {
                 range_two = scan.nextInt();
             }
 
-            System.out.println("How many questions you want to solve?");
-            totalIteration = scan.nextInt();
+            if (operatr==1) {
+                System.out.println("Set mininum range for the power: ");
+                range_one_exp = scan.nextInt();
+                System.out.println("Set maxinum range for the power: ");
+                range_two_exp = scan.nextInt();
+                while (range_one_exp>range_two_exp) {
+                    System.out.println();
+                    System.out.println("Invalid Range. Re-enter.");
+                    System.out.println("Set minimum range: ");
+                    range_one_exp = scan.nextInt();
+                    System.out.println();
+                    System.out.println("Set maxinum range: ");
+                    range_two_exp = scan.nextInt();
+            }
+            }
+
+            while (totalIteration<=0) {
+                System.out.println("How many questions you want to solve?");
+                totalIteration = scan.nextInt();
+                System.out.println();
+                if (totalIteration<=0) {
+                    System.out.println("Invalid input. Why put less than one?");
+                }
+            }
 
         while (completedIteration != totalIteration) {
             switch (operatr) {
                 case 1:
                     // Gets an random number between user entered range and mentions in the question
                         a = rand.nextInt((range_two - range_one +1 )+range_one);
-                        b = rand.nextInt((range_two - range_one +1 )+range_one);
+                        b = rand.nextInt((range_two_exp - range_one_exp +1 )+range_one);
                         total = (float) Math.pow(a, b);
 
                         System.out.println("What is "+ a +" powered by " + b +" ?");
@@ -75,11 +100,13 @@ public class LabActivity4_MathExercizer {
                         // Answer checker
                         if (userGuess == total) {
                             System.out.println(ANSI_Green+"Correct!"+ANSI_Reset);
+                            System.out.println();
                             completedIteration++;
                         break;
                         } else {
                             System.out.println(ANSI_Red+"Wrong!");
                             System.out.println("Answer is: " + total +ANSI_Reset);
+                            System.out.println();
                             completedIteration++;
                         break;
                         }
@@ -89,7 +116,6 @@ public class LabActivity4_MathExercizer {
                         b = rand.nextInt((range_two - range_one +1 )+range_one);
                         if (prev_a != a && prev_b != b) {
                             total = a * b;
-                        System.out.println();
 
                         System.out.println("What is "+ a +" multiplied by " + b +" ?");
                         userGuess = scan.nextFloat();
@@ -99,13 +125,15 @@ public class LabActivity4_MathExercizer {
                             completedIteration++;
                             prev_a = a;
                             prev_b = b;
-                        break;
+                            System.out.println();
+                            break;
                         } else {
                             System.out.println(ANSI_Red+"Wrong!");
                             System.out.println("Answer is: " + total +ANSI_Reset);
                             completedIteration++;
                             prev_a = a;
                             prev_b = b;
+                            System.out.println();
                             break;
                         }
                     } else {
@@ -116,13 +144,14 @@ public class LabActivity4_MathExercizer {
                         a = rand.nextInt((range_two - range_one +1 )+range_one);
                         b = rand.nextInt((range_two - range_one +1 )+range_one);
                         /*
-                        repeatingly checks if the numbers respects the division rules
+                        repeatingly checks if the numbers respects the division rules:
                         1. if 'a' is bigger than divisor 'b'
-                        2.
+                        2. divisor 'b' isnt 0
+                        3. making it basic by checking if theres no remainder
+                        4. checking if numbers are not the same as the previous
                         */
                         if (a>=b && b!=0 && a%b == 0 && prev_a != a && prev_b != b) {
                             total = (float) a / b;
-                        System.out.println();
                         
                         System.out.println("What is "+ a +" divided by " + b +" ?");
                         userGuess = scan.nextFloat();
@@ -132,6 +161,7 @@ public class LabActivity4_MathExercizer {
                             completedIteration++;
                             prev_a = a;
                             prev_b = b;
+                            System.out.println();
                         break;
                         } else {
                             System.out.println(ANSI_Red+"Wrong!");
@@ -139,6 +169,7 @@ public class LabActivity4_MathExercizer {
                             completedIteration++;
                             prev_a = a;
                             prev_b = b;
+                            System.out.println();
                         break;
                         }
                         } else {
@@ -151,7 +182,6 @@ public class LabActivity4_MathExercizer {
                         b = rand.nextInt((range_two - range_one +1 )+range_one);
                         total = a + b;
                         if (prev_a != a && prev_b != b){
-                        System.out.println();
                         System.out.println("What is "+ a +" plus " + b +" ?");
                         userGuess = scan.nextFloat();
                         // Answer checker
@@ -160,6 +190,7 @@ public class LabActivity4_MathExercizer {
                             completedIteration++;
                             prev_a = a;
                             prev_b = b;
+                            System.out.println();
                         break;
                         } else {
                             System.out.println(ANSI_Red+"Wrong!");
@@ -167,6 +198,7 @@ public class LabActivity4_MathExercizer {
                             completedIteration++;
                             prev_a = a;
                             prev_b = b;
+                            System.out.println();
                         break;
                         }
                     } else{
@@ -179,7 +211,6 @@ public class LabActivity4_MathExercizer {
                         total = a - b;
 
                         if (prev_a != a && prev_b != b){
-                        System.out.println();
                         System.out.println("What is "+ a +" minus " + b +" ?");
                         userGuess = scan.nextFloat();
                         // Answer checker
@@ -188,6 +219,7 @@ public class LabActivity4_MathExercizer {
                             completedIteration++;
                             prev_a = a;
                             prev_b = b;
+                            System.out.println();
                         break;
                         } else {
                             System.out.println(ANSI_Red+"Wrong!");
@@ -195,16 +227,12 @@ public class LabActivity4_MathExercizer {
                             completedIteration++;
                             prev_a = a;
                             prev_b = b;
+                            System.out.println();
                         break;
                         }
                     } else{
                         continue;
                     }
-                case 6:
-                    System.out.println("pemdas");
-                    total = 7-6+3/3*5;
-                    System.out.println(total);
-                    break;
             }
             
         }
