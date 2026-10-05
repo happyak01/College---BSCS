@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Random;
 import java.lang.Math;
 
-public class LabActivity4_MathExercizer {
+public class LabActivity4_MathTrainer {
     public static void main(String[] args){
         Random rand = new Random();
         Scanner scan = new Scanner(System.in);
@@ -21,11 +21,11 @@ public class LabActivity4_MathExercizer {
         int prev_a=0;
         int prev_b=0;
 
-        System.out.println("Welcome to Math Exercizer! You will choose which operation to practice and then set number range that will be used");
+        System.out.println("Welcome to Math Trainer! You will choose which operation to practice and then set number range that will be used");
         System.out.println();
             while (operatr <= 0 || operatr>=6) {
                 System.out.println("Choose an operator:");
-                System.out.println("1 - Exponent");
+                System.out.println("1 - Exponential");
                 System.out.println("2 - Multiplication");
                 System.out.println("3 - Division");
                 System.out.println("4 - Addition");
