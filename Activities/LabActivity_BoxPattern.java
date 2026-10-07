@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BOxPattern {
+public class LabActivity_BoxPattern {
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         System.out.print("What size do you want? ");
